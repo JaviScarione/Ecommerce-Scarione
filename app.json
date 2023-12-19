@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "my-ecommerce-app",
-    "slug": "my-ecommerce-app",
+    "name": "ecommerce-scarione",
+    "slug": "ecommerce-scarione",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

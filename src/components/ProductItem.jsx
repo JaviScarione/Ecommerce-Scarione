@@ -3,10 +3,10 @@ import Card from "./Card";
 import { colors } from '../global/colors'
 
 
-const ProductItem = ({ product, onSelectProductEvent, onSelectCategoryEvent }) => {
+const ProductItem = ({ product, navigation }) => {
   
   return (
-    <TouchableOpacity onPress={()=>(onSelectProductEvent(product.id), onSelectCategoryEvent(''))}>
+    <TouchableOpacity onPress={()=>(navigation.navigate("Detalle", product.id))}>
       <Card style={styles.containerProductItem}>
         <Text style={styles.productTitle}>{product.title}</Text>
         <Image

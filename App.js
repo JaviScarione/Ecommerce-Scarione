@@ -1,7 +1,5 @@
 import { ActivityIndicator } from "react-native";
-import CategoriesScreen from "./src/screens/CategoriesScreen";
-import ProductsByCategoryScreen from "./src/screens/ProductsByCategoryScreen";
-import ProductDetailScreen from "./src/screens/ProductDetailScreen";
+import Navigator from "./src/navigation/Navigator";
 import { useFonts } from "expo-font";
 import { useState } from "react";
 
@@ -25,19 +23,6 @@ export default function App() {
   };
 
   return (
-    <>
-      {categorySelected && (
-        <ProductsByCategoryScreen
-          category={categorySelected}
-          onSelectCategoryEvent={onSelectCategory}
-          onSelectProductEvent={onSelectProduct}
-        />
-      )}
-      {productSelected && <ProductDetailScreen onSelectCategoryEvent={onSelectCategory}
-          onSelectProductEvent={onSelectProduct}/>}
-      {!categorySelected && !productSelected && (
-        <CategoriesScreen onSelectCategoryEvent={onSelectCategory} />
-      )}
-    </>
+    <Navigator />
   );
 }
