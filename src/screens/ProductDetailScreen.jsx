@@ -7,7 +7,6 @@ const ProductDetailScreen = ({route}) => {
     
     const [productSelected, setProductSelected] = useState({})
     const [isLoading, setIsLoading] = useState(true)
-    const [isPortrait, setIsPortrait] = useState(true)
 
     const productId = route.params    
 
@@ -26,7 +25,7 @@ const ProductDetailScreen = ({route}) => {
             <ActivityIndicator />
             :
             <>
-                <ScrollView >
+                <ScrollView style={styles.detailScreen}>
                     <Image
                         source={{ uri: productSelected.images[0] }}
                         resizeMode='cover'
@@ -56,39 +55,44 @@ const styles = StyleSheet.create({
       height: 400,
   
     },
+    detailScreen: {
+      flex: 1,
+    },
     detailContainer: {
       alignItems: 'center',
-      marginTop: 30,
+      marginHorizontal: 5,
     },
     title: {
       fontFamily: 'JosefinSans-Bold',
-      fontSize: 32,
-      marginBottom: 20,
-      color: colors.primary,
+      fontSize: 24,
+      marginBottom: 5,
+      color: colors.secondary,
+      textAlign: 'center',
     },
     description: {
       fontFamily: 'JosefinSans-Regular',
-      fontSize: 20,
-      marginBottom: 20,
-      color: colors.primary,
+      fontSize: 18,
+      marginBottom: 5,
+      color: colors.secondary,
+      textAlign: 'center',
     },
     price: {
       fontFamily: 'JosefinSans-Bold',
-      fontSize: 32,
-      color: colors.primary,
-      marginBottom: 20,
+      fontSize: 28,
+      color: colors.secondary,
+      marginBottom: 15,
     },
     buyButton: {
       width: 250,
-      padding: 10,
+      padding: 5,
       alignItems: 'center',
-      backgroundColor: colors.secondary,
+      backgroundColor: colors.primary,
       borderRadius: 10,
       alignItems: 'center',
     },
     buyText: {
       fontFamily: 'JosefinSans-Bold',
-      color: colors.primary,
+      color: colors.textLight,
       fontSize: 20,
       paddingBottom: 5,
     },

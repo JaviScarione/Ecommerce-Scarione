@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     },
     textInput:{
         width: '80%',
-        color: '#fff',
+        color: colors.secondary,
         paddingLeft: 10,
     },
 
