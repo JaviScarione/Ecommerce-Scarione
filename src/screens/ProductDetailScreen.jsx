@@ -1,21 +1,30 @@
 import {View, Text, StyleSheet, ActivityIndicator, Image, TouchableOpacity, useWindowDimensions, ScrollView} from 'react-native'
-import products_data from '../data/products_data.json'
 import { useEffect, useState } from 'react'
 import { colors } from '../global/colors'
+import { useSelector, useDispatch } from 'react-redux'
+import Carousel from '../components/Carousel'
+import { addItem } from '../features/cartSlice'
 
-const ProductDetailScreen = ({route}) => {
+
+const ProductDetailScreen = ({route, navigation}) => {
     
-    const [productSelected, setProductSelected] = useState({})
     const [isLoading, setIsLoading] = useState(true)
 
-    const productId = route.params    
+    const productId = route.params  
+    
+    const productSelected = useSelector(state => state.shopReducer.productSelected)
 
     useEffect(()=>{
-        const productFound = products_data.find(product=>product.id===productId)
-        setProductSelected(productFound)
         setIsLoading(false)
     }
     ,[productId])
+
+    const dispatch = useDispatch()
+
+    const onAddToCart = () =>{
+      dispatch(addItem({...productSelected, quantity: 1}))
+      navigation.navigate('ShopStack', { screen: 'Categorías' });
+    }
 
     return(
         <>
@@ -26,16 +35,12 @@ const ProductDetailScreen = ({route}) => {
             :
             <>
                 <ScrollView style={styles.detailScreen}>
-                    <Image
-                        source={{ uri: productSelected.images[0] }}
-                        resizeMode='cover'
-                        style={styles.imageProduct}
-                    />
+                    <Carousel />
                     <View style={styles.detailContainer}>
                     <Text style={styles.title}>{productSelected.title}</Text>
                     <Text style={styles.description}>{productSelected.description}</Text>
                     <Text style={styles.price}>$ {productSelected.price}</Text>
-                    <TouchableOpacity style={styles.buyButton} onPress={() => null}>
+                    <TouchableOpacity style={styles.buyButton} onPress={onAddToCart}>
                         <Text style={styles.buyText}>Comprar</Text>
                     </TouchableOpacity>
                     </View>

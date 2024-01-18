@@ -1,13 +1,19 @@
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { colors } from "../global/colors";
 import { AntDesign } from "@expo/vector-icons";
-import { Entypo } from "@expo/vector-icons";
+import { LinearGradient } from 'expo-linear-gradient';
 
 const Header = ({ title, navigation }) => {
-  return (
-    <>
-      <View style={title !== "Categorías" ? styles.CategoriesContainer : styles.headerContainer}>
-        {title !== "Categorías" && (
+  if (title === "Login" || title === "Signup") {
+    return null;
+  }
+  return (    
+      <View style={styles.headerContainer}>
+        <LinearGradient 
+          colors = {[colors.textLight, colors.secondary]}
+          style = {styles.background}
+          />
+        {navigation.canGoBack() ? (
           <TouchableOpacity onPress={navigation.goBack}>
             <AntDesign
               name="arrowleft"
@@ -16,17 +22,11 @@ const Header = ({ title, navigation }) => {
               style={styles.back}
             />
           </TouchableOpacity>
+        ) : (
+          <View></View>
         )}
-
         <Text style={styles.headerTitle}>{title}</Text>
-
-        {title !== "Categorías" && (
-          <TouchableOpacity onPress={navigation.popToTop}>
-            <Entypo name="home" size={24} color={colors.textLight} />
-          </TouchableOpacity>
-        )}
       </View>
-    </>
   );
 };
 
@@ -35,21 +35,12 @@ export default Header;
 const styles = StyleSheet.create({
   headerContainer: {
     height: 150,
-    flexDirection: 'row',
-    justifyContent: "center",
-    paddingHorizontal: 30,
-    alignItems: "center",
-    backgroundColor: colors.secondary,
-    paddingTop: 50,
-  },
-  CategoriesContainer: {
-    height: 150,
-    flexDirection: 'row',
+    flexDirection: "row",
     justifyContent: "space-between",
     paddingHorizontal: 30,
     alignItems: "center",
     backgroundColor: colors.secondary,
-    paddingTop: 50,
+    paddingTop: 40,
   },
   headerTitle: {
     color: colors.textLight,
@@ -62,4 +53,15 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     width: 110,
   },
+  back: {
+    marginTop: 8,
+  },
+  background: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    height: 150,
+  } 
+
 });

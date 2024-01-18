@@ -2,7 +2,7 @@ import { StyleSheet, Text, TouchableOpacity, Image } from "react-native";
 import Card from "./Card";
 import { colors } from '../global/colors'
 import { useDispatch } from 'react-redux'
-import { setProductIdSelected } from '../features/shopSlice'
+import { setProductIdSelected, setProductSelected } from '../features/shopSlice'
 
 
 const ProductItem = ({ product, navigation }) => {
@@ -12,6 +12,7 @@ const ProductItem = ({ product, navigation }) => {
   return (
     <TouchableOpacity onPress={()=>{
       dispatch(setProductIdSelected(product.id))
+      dispatch(setProductSelected(product.id))
       navigation.navigate("Detalle", product.id)
     }}>
       <Card style={styles.containerProductItem}>
