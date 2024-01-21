@@ -51,10 +51,6 @@ const LocationSelector = () => {
             })()
     }, [location])
 
-
-    //console.log("error: ", error)
-    //console.log("Address: ", address)
-
     const dispatch = useDispatch()
 
     const onConfirmAddress = ()=>{

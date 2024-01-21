@@ -1,9 +1,23 @@
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { colors } from "../global/colors";
 import { AntDesign } from "@expo/vector-icons";
+import { useDispatch, useSelector } from 'react-redux';
 import { LinearGradient } from 'expo-linear-gradient';
+import { logout } from '../features/authSlice';
+import { deleteSession } from '../db';
+
 
 const Header = ({ title, navigation }) => {
+
+  const email = useSelector(state=>state.authReducer.user)
+    const localId = useSelector(state=>state.authReducer.localId)
+    const dispatch = useDispatch()
+    const onLogout = ()=>{
+        dispatch(logout())
+        const deletedSession = deleteSession(localId)
+        console.log("Sesión eliminada: ", deletedSession)
+    }
+
   if (title === "Login" || title === "Signup") {
     return null;
   }
@@ -19,13 +33,20 @@ const Header = ({ title, navigation }) => {
               name="arrowleft"
               size={24}
               color={colors.textLight}
-              style={styles.back}
+              style={styles.icon}
             />
           </TouchableOpacity>
         ) : (
           <View></View>
         )}
-        <Text style={styles.headerTitle}>{title}</Text>
+        <Text style={title !== 'Categorías' ? styles.headerTitle: styles.catTitle}>{title}</Text>
+        {
+          email
+          &&
+          <TouchableOpacity style={styles.icon} onPress={onLogout}>
+              <AntDesign name="logout" size={24} color={colors.textLight} />
+          </TouchableOpacity>
+        }
       </View>
   );
 };
@@ -46,15 +67,17 @@ const styles = StyleSheet.create({
     color: colors.textLight,
     fontFamily: "JosefinSans-Bold",
     textTransform: "uppercase",
-    fontSize: 22,
+    fontSize: 20,
   },
-  buttons: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    width: 110,
+  catTitle: {
+    color: colors.textLight,
+    fontFamily: "JosefinSans-Bold",
+    textTransform: "uppercase",
+    fontSize: 20,
+    marginLeft: 24,
   },
-  back: {
-    marginTop: 8,
+  icon: {
+    marginTop: 5,
   },
   background: {
     position: 'absolute',
@@ -63,5 +86,4 @@ const styles = StyleSheet.create({
     top: 0,
     height: 150,
   } 
-
 });

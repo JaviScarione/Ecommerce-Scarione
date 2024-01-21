@@ -6,7 +6,7 @@ export const authSlice = createSlice({
         user: null,
         token: null,
         profilePicture: null, 
-        localId: null,
+        localId: '',
         location: {
             latitude: null, 
             longitude: null,
