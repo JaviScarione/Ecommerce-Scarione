@@ -4,7 +4,8 @@ import AuthNavigator from "./AuthNavigator";
 import { useSelector, useDispatch } from "react-redux";
 import { useGetProfilePictureQuery } from "../services/shopService";
 import { useEffect } from "react";
-import { setProfilePicture } from "../features/authSlice";
+import { setProfilePicture, setUser, setUserLocation  } from "../features/authSlice";
+import { useGetUserLocationQuery } from "../services/shopService";
 
 
 const MainNavigator = () => {
@@ -12,13 +13,17 @@ const MainNavigator = () => {
     const localId = useSelector(state=>state.authReducer.localId)
 
     const {data, isLoading, error } = useGetProfilePictureQuery(localId)
+    const { data: locationData, error: locationError, isLoading: isLocationLoading } = useGetUserLocationQuery(localId)
     const dispatch = useDispatch()
 
     useEffect(()=>{
         if(data){
             dispatch(setProfilePicture(data.image))
         }
-    },[data])
+        if(locationData){
+            dispatch(setUserLocation(locationData))
+        }
+    },[data, locationData, isLoading, isLocationLoading])
 
     return (
         <NavigationContainer>

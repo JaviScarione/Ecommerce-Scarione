@@ -1,13 +1,17 @@
-import { Text, View, StyleSheet, Pressable, Image } from "react-native";
+import { Text, View, StyleSheet, Pressable, Image, ScrollView } from "react-native";
 import user_data from "../data/user_data.json"
 import { useSelector } from "react-redux";
+import LocationSelector from "../components/LocationSelector";
+import { colors } from '../global/colors'
 
 
 const ProfileScreen = ({ navigation }) => {
 
     const image = useSelector(state=>state.authReducer.profilePicture)
+    const location = useSelector(state=>state.authReducer.location)
 
   return (
+    <ScrollView>
         <View style={styles.container}>
             <View>
                 <Pressable onPress={()=>navigation.navigate("Seleccionar imagen")}
@@ -43,6 +47,16 @@ const ProfileScreen = ({ navigation }) => {
                 <Text style={styles.userData}>{user_data.city}</Text>
             </View> 
         </View>
+        {
+            location.address
+            &&
+            <View style={styles.addressContainer}>
+                <Text style={styles.addressTitle}>Última ubicación guardada: </Text>
+                <Text style={styles.addressDescription}>{location.address}</Text>     
+            </View>
+        }
+        <LocationSelector />
+        </ScrollView>
   );
 };
 
@@ -74,5 +88,22 @@ const styles = StyleSheet.create({
     userData: {
         fontFamily: 'JosefinSans-Regular',
         fontSize: 12
+    },
+    addressContainer: {
+        alignItems: 'center',
+        gap: 5,
+        padding: 10,
+        margin: 10,
+        borderRadius: 20,
+        backgroundColor: colors.secondaryBack,
+    },
+    addressTitle: {
+        fontFamily: 'JosefinSans-Bold',
+        fontSize: 14,
+        color:"#fff"
+    },
+    addressDescription: {
+        fontFamily: 'JosefinSans-Regular',
+        color:"#fff"
     }
 })
