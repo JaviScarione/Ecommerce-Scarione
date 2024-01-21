@@ -1,11 +1,12 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { StyleSheet } from "react-native";
 
+import ProfileNavigator from "./ProfileNavigator";
 import ShopNavigator from "./ShopNavigator";
 import CartNavigator from "./CartNavigator";
 import OrdersNavigator from "./OrdersNavigator";
 import { colors } from "../global/colors";
-import { Entypo, FontAwesome } from '@expo/vector-icons'; 
+import { Entypo, FontAwesome, Feather } from '@expo/vector-icons'; 
 
 
 const Tab = createBottomTabNavigator()
@@ -35,7 +36,7 @@ const TabNavigator = ()=>{
                     component={CartNavigator} 
                     options={{
                         tabBarIcon: ({focused}) => (
-                            <FontAwesome name="opencart" size={24} color={focused? colors.primary : colors.textLight} />
+                            <Feather name="shopping-cart" size={24} color={focused? colors.primary : colors.textLight} />
                         )
                     }}
                 />
@@ -44,7 +45,16 @@ const TabNavigator = ()=>{
                     component={OrdersNavigator} 
                     options={{
                         tabBarIcon: ({focused}) => (
-                            <FontAwesome name="reorder" size={24} color={focused? colors.primary : colors.textLight} />
+                            <Entypo name="list" size={24} color={focused? colors.primary : colors.textLight} />
+                        )
+                    }}
+                />
+                 <Tab.Screen 
+                    name="ProfileStack" 
+                    component={ProfileNavigator} 
+                    options={{
+                        tabBarIcon: ({focused}) => (
+                            <FontAwesome name="user-o" size={24} color={focused? colors.primary : colors.textLight} />
                         )
                     }}
                 />
@@ -56,7 +66,7 @@ export default TabNavigator
 
 const styles = StyleSheet.create({
     tabBar:{
-        backgroundColor: colors.secondary,
+        backgroundColor: colors.secondaryBack,
         shadowColor: colors.secondary,
         elevation: 10,
         position: "absolute",
@@ -64,6 +74,6 @@ const styles = StyleSheet.create({
         right: 25,
         height: 60,
         borderRadius:20,
-        marginBottom: 10,
+        marginBottom: 15,
     }
 })

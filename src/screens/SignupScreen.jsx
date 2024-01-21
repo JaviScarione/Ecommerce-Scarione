@@ -93,11 +93,11 @@ export default SignupScreen
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: colors.secondary,
-        justifyContent: 'center',
-        alignItems: 'center',
-        flex: 1,
-        gap: 10,
+      backgroundColor: colors.secondary,
+      justifyContent: 'center',
+      alignItems: 'center',
+      flex: 1,
+      gap: 10,
     },
     btn: {
         padding: 10,

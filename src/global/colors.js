@@ -4,5 +4,6 @@ export const colors = {
     textLight: '#D3D5D7',
     secondaryBack: '#393940',
     error: '#B22222',
+    success: "#00A878"
 }
 
