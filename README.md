@@ -1,10 +1,12 @@
-# Ecommerce React Native
+# Ecommerce Scarione - React Native
 
-***Desarrollo de Aplicaciones - Comisión 56680, Coderhouse***
+***Desarrollo de Aplicaciones - Comisión 56680, Coderhouse.***
+
+*Proyecto de evaluación técnica de desarrollo de una aplicación con varios stacks y manejo de características de dispositivos.*
 
 ### Requerimientos
 
-*Para ejecutar este proyecto necesitas tener instalado lo siguiente:*
+**Para ejecutar este proyecto necesitas tener instalado lo siguiente:**
 
 1. [Node.js v16.xx o superior](https://nodejs.org/en)
 1. [Git](https://git-scm.com/)
@@ -33,14 +35,18 @@ npm install
 
 
 
-*Una vez instalados todos los requerimientos de la aplicación, ejecute el siguiente comando en la consola*
+**Una vez instalados todos los requerimientos de la aplicación, ejecute el siguiente comando en la consola**
 
 ```
 npx expo start
 ```
+
+
 *Para vizualizar la App se debe abrir con el emulador de Android desde el ordenador, ó escaneando el QR mediante Expo Go desde el movil*
 
-*La primera visualización es el Login ó Registro de usuario:*
+
+
+La primera visualización es el Login ó Registro de usuario:
 
 ![Login](https://github.com/JaviScarione/Ecommerce-Scarione/blob/main/assets/login.jpeg?raw=true){width=400px}
 ![SignUp](https://github.com/JaviScarione/Ecommerce-Scarione/blob/main/assets/signup.jpeg?raw=true){width=400px}
