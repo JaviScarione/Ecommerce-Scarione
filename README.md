@@ -58,6 +58,7 @@ ___
 * [Redux](https://redux.js.org/) - Para el manejo de estados.
 * [Expo Font](https://docs.expo.dev/versions/latest/sdk/font/) - Fuentes de texto.
 * [Expo Image Picker](https://docs.expo.dev/versions/latest/sdk/imagepicker/) - Para las funciones de cámara.
+* [Expo Location](https://docs.expo.dev/versions/latest/sdk/location/) - Para las funciones de ubicación.
 * [Expo SQLite](https://docs.expo.dev/versions/latest/sdk/sqlite/) - Para persistencia de datos.
 * [Geolib](https://www.npmjs.com/package/geolib) - Para marcar distancias de un punto a otro en la ubicación.
 * [Yup](https://www.npmjs.com/package/yup) - Para validación de datos de usuario.
