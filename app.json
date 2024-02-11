@@ -9,7 +9,7 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#D3D5D7"
+      "backgroundColor": "#050517"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -20,11 +20,17 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#D3D5D7"
-      }
+        "backgroundColor": "#050517"
+      },
+      "package": "com.javierscarione.ecommercescarione"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "298dfcf5-7963-4fa9-b039-70a23088002d"
+      }
     }
   }
 }

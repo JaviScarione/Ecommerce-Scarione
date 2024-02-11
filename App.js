@@ -9,7 +9,7 @@ import { init } from './src/db';
 export default function App() {
 
   init()
-  .then(()=>console.log("Base de datos inicializada"))
+  .then(()=>console.log("Base de datos inicializada."))
   .catch((error)=>console.log("La iniciación de la base de datos falló: ", error))
   
   const [fontLoaded] = useFonts({

@@ -62,6 +62,7 @@ const styles = StyleSheet.create({
     },
     detailScreen: {
       flex: 1,
+      backgroundColor: colors.textLight,
     },
     detailContainer: {
       alignItems: 'center',

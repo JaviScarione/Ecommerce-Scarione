@@ -1,11 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
 import { base_auth_url, api_key } from "../firebase/database" 
 
-//const base_auth_url = process.env.EXPO_PUBLIC_BASE_AUTH_URL
-//console.log(base_auth_url);
-//const api_key = process.env.EXPO_PUBLIC_API_KEY
-//console.log(api_key);
-
 export const authApi = createApi({
     reducerPath: "authApi",
     baseQuery: fetchBaseQuery({baseUrl:base_auth_url}),

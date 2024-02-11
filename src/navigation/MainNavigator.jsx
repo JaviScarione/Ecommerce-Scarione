@@ -7,6 +7,8 @@ import { useEffect } from "react";
 import { setProfilePicture, setUser, setUserLocation  } from "../features/authSlice";
 import { useGetUserLocationQuery } from "../services/shopService";
 import { fetchSession } from "../db";
+import { useGetProductsQuery } from "../services/shopService";
+import { setProducts } from "../features/shopSlice"
 
 const MainNavigator = () => {
     const user = useSelector(state=>state.authReducer.user)
@@ -14,7 +16,15 @@ const MainNavigator = () => {
 
     const {data, isLoading, error } = useGetProfilePictureQuery(localId)
     const { data: locationData, error: locationError, isLoading: isLocationLoading } = useGetUserLocationQuery(localId)
+    const { data: productsData, isLoading: isLoadingProducts, error: productsError } = useGetProductsQuery();
     const dispatch = useDispatch()
+
+    useEffect(() => {
+        if (!isLoadingProducts && !productsError) {
+          dispatch(setProducts(productsData));
+        }
+    }, [productsData, isLoadingProducts, productsError]);
+
 
     useEffect(()=>{
         if(data){
@@ -30,9 +40,7 @@ const MainNavigator = () => {
         (async ()=>{
             try{
                 const session = await fetchSession(localId)
-                console.log("Session:", session)
                 if(session?.rows.length){
-                    console.log("Se han encontrado datos de usuario")
                     const user = session.rows._array[0]
                     dispatch(setUser(user))
                 }

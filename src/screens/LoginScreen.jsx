@@ -29,7 +29,6 @@ const LoginScreen = ({navigation}) => {
             })
             .then(result=>console.log("Éxito al guardar sesión: ", result))
             .catch(error=>console.log("Error al guardar sesión: ", error.message))
-          
         }
     }, [result])
 

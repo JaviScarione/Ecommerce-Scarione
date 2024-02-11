@@ -11,7 +11,7 @@ const ProfileScreen = ({ navigation }) => {
     const location = useSelector(state=>state.authReducer.location)
 
   return (
-    <ScrollView>
+    <ScrollView style={styles.userScreen}>
         <View style={styles.container}>
             <View>
                 <Pressable onPress={()=>navigation.navigate("Seleccionar imagen")}
@@ -63,13 +63,17 @@ const ProfileScreen = ({ navigation }) => {
 export default ProfileScreen;
 
 const styles = StyleSheet.create({
+    userScreen: {
+        backgroundColor: colors.textLight,
+
+    },
     container: {
         flexDirection: 'row',
         marginTop: 40,
         margin: 20,
         gap: 20,
         alignItems: 'center',
-        justifyContent: 'space-evenly'
+        justifyContent: 'space-evenly',
     },
     profilePicture: {
         width: 100,

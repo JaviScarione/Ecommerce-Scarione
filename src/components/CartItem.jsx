@@ -15,7 +15,6 @@ const CartItem = ({item, navigation}) => {
 
     const onDeleteToCart = (productId) => {
         dispatch(removeItem(productId));
-        console.log(cartItems.length);
         if (cartItems.length === 1) {
             navigation.navigate('ShopStack', { screen: 'Categorías' });
         }
@@ -30,7 +29,6 @@ const CartItem = ({item, navigation}) => {
               />
           <View >       
               <Text style={styles.cartTitle}>{item.title}</Text>
-              <Text style={styles.cartLightText}>{item.brand}</Text>
               <Text style={styles.cartLightText}>$ {item.price} c/u</Text>
               <Text style={styles.cartTotalPrice}>
                   Cantidad: {item.quantity}, Total: $ {item.price*item.quantity}
@@ -55,8 +53,8 @@ const CartItem = ({item, navigation}) => {
           flexDirection: 'row',
       },
       imageCartItem: {
-          height: 50,
-          width:50,
+          height: 70,
+          width: 70,
           marginRight:10,
       },
       trashCart: {
@@ -65,16 +63,15 @@ const CartItem = ({item, navigation}) => {
       cartTitle:{
           fontFamily:'JosefinSans-Bold',
           textTransform: 'capitalize',
-          fontSize:20
+          fontSize: 16
       },
       cartLightText:{
           fontFamily:'JosefinSans-Regular',
           textTransform: 'capitalize',
-          fontSize:15,
       },cartTotalPrice:{
           fontFamily:'JosefinSans-Bold',
           textTransform: 'capitalize',
-          fontSize:16,
+          fontSize:14,
           color:colors.secondary,
       }
   })

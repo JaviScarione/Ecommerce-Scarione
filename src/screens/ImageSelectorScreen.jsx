@@ -18,7 +18,6 @@ const ImageSelectorScreen = ({navigation}) => {
     if (!granted) {
       return false
     }
-    console.log("Permisos otorgados")
     return true
   }
 
@@ -36,7 +35,7 @@ const ImageSelectorScreen = ({navigation}) => {
         setImage(`data:image/jpeg;base64,${result.assets[0].base64}`)
       }
     } else {
-      console.log("No se han otorgado permisos para usar la cámara")
+      console.log("No se han otorgado permisos para usar la cámara.")
     }
   }
 
@@ -72,7 +71,7 @@ const ImageSelectorScreen = ({navigation}) => {
           </View>
           :
           <View style={styles.noImageContainer}>
-            <MaterialIcons name="no-photography" size={200} color="#ccc" />
+            <MaterialIcons name="no-photography" size={200} color={colors.secondaryBack} />
             <TouchableOpacity style={styles.btn} onPress={pickImage}>
               <Text style={styles.textBtn}>Abrir cámara</Text>
             </TouchableOpacity>
@@ -85,11 +84,14 @@ const ImageSelectorScreen = ({navigation}) => {
 export default ImageSelectorScreen
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: colors.textLight,
+    flex: 1
+  },
   noImageContainer: {
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 100,
-
   },
   btn: {
     backgroundColor: colors.primary,

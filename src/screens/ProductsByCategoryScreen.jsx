@@ -1,9 +1,10 @@
-import {FlatList, ActivityIndicator} from 'react-native'
+import {FlatList, ActivityIndicator, StyleSheet} from 'react-native'
 import ProductItem from '../components/ProductItem'
 import { useState, useEffect } from 'react'
 import Search from '../components/Search'
 import { useSelector } from 'react-redux'
 import { useGetProductsByCategoryQuery } from '../services/shopService'
+import { colors } from '../global/colors'
 
 
 const ProductsByCategoryScreen = ({ navigation }) => {
@@ -45,6 +46,7 @@ const ProductsByCategoryScreen = ({ navigation }) => {
                     data={productsByCategory}
                     renderItem={renderProductItem}
                     keyExtractor={item=>item.id}
+                    style={styles.list}
                 />
             </>
         }
@@ -53,3 +55,9 @@ const ProductsByCategoryScreen = ({ navigation }) => {
 }
 
 export default ProductsByCategoryScreen
+
+const styles = StyleSheet.create({
+    list: {
+        backgroundColor: colors.textLight
+    }
+})

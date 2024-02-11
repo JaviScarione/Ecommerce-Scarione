@@ -2,20 +2,15 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { colors } from "../global/colors";
 import { AntDesign } from "@expo/vector-icons";
 import { useDispatch, useSelector } from 'react-redux';
-import { LinearGradient } from 'expo-linear-gradient';
 import { logout } from '../features/authSlice';
-import { deleteSession } from '../db';
 
 
 const Header = ({ title, navigation }) => {
 
   const email = useSelector(state=>state.authReducer.user)
-    const localId = useSelector(state=>state.authReducer.localId)
     const dispatch = useDispatch()
     const onLogout = ()=>{
         dispatch(logout())
-        const deletedSession = deleteSession(localId)
-        console.log("Sesión eliminada: ", deletedSession)
     }
 
   if (title === "Login" || title === "Signup") {
@@ -23,10 +18,7 @@ const Header = ({ title, navigation }) => {
   }
   return (    
       <View style={styles.headerContainer}>
-        <LinearGradient 
-          colors = {[colors.textLight, colors.secondary]}
-          style = {styles.background}
-          />
+    
         {navigation.canGoBack() ? (
           <TouchableOpacity onPress={navigation.goBack}>
             <AntDesign
@@ -60,7 +52,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     paddingHorizontal: 30,
     alignItems: "center",
-    backgroundColor: colors.secondary,
+    backgroundColor: colors.secondaryBack,
     paddingTop: 40,
   },
   headerTitle: {
