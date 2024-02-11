@@ -42,12 +42,12 @@ npx expo start
 
 *La primera visualización es el Login ó Registro de usuario:*
 
-![Login](https://github.com/JaviScarione/Ecommerce-Scarione/blob/main/assets/login.jpeg?raw=true){height=600px}
-![SignUp](https://github.com/JaviScarione/Ecommerce-Scarione/blob/main/assets/signup.jpeg?raw=true){height=600px}
+![Login](https://github.com/JaviScarione/Ecommerce-Scarione/blob/main/assets/login.jpeg?raw=true){width=400px}
+![SignUp](https://github.com/JaviScarione/Ecommerce-Scarione/blob/main/assets/signup.jpeg?raw=true){width=400px}
 
 Una vez ingrese o se registre se dirigirá a la primer screen de la App:
 
-![Categories](https://github.com/JaviScarione/Ecommerce-Scarione/blob/main/assets/categories.jpeg?raw=true){height=600px}
+![Categories](https://github.com/JaviScarione/Ecommerce-Scarione/blob/main/assets/categories.jpeg?raw=true){width=400px}
 ___
 
 ### Creado con
